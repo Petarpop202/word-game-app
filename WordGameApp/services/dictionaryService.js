@@ -7,7 +7,7 @@ async function checkWordResult(wordToCheck) {
     let totalPoints = 0;
 
     if (dictionaryResult.isValid) {
-        totalPoints += 1;
+        totalPoints += getWordPoints(wordToCheck)
 
         if (isPalindrome(wordToCheck)) {
             totalPoints += 3;
@@ -25,15 +25,20 @@ async function checkWordInDictionary(wordToCheck) {
         const response = await axios.get(`${englishDictionaryApiUrl}${wordToCheck}`);
         return {
             isValid: true,
-            points: 1
         };
     } catch (error) {
         return {
             isValid: false,
-            points: 0,
             error: error.message
         };
     }
+}
+
+function getWordPoints(word) {
+    const uniqueLetters = new Set(word);
+    const points = uniqueLetters.size;
+
+    return points;
 }
 
 function isPalindrome(word) {

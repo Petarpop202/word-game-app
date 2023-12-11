@@ -40,12 +40,8 @@ function Game() {
           word: wordInput,
         });
 
-        if (response.data.totalPoints === 1)
+        if (response.data.totalPoints !== 1)
           toast.success('Success word !');
-        if (response.data.totalPoints === 4)
-          toast.success('Word is palindrome !');
-        if (response.data.totalPoints === 3)
-          toast.success('Word is almost palindrome !');
 
         setPoints((prevPoints) => prevPoints + response.data.totalPoints);
         setSubmittedWords((prevWords) => [...prevWords, wordInput]);

@@ -31,9 +31,10 @@ describe('Word Game Functions', () => {
     const totalPointInvalidWord = await checkWordResult('invalidWord');
     const totalPointBanana = await checkWordResult('banana');
 
-    assert.strictEqual(totalPointsRadar, 4); 
-    assert.strictEqual(totalPointsHam, 1); 
+    assert.strictEqual(totalPointsRadar, 6); 
+    assert.strictEqual(totalPointsHam, 3); 
     assert.strictEqual(totalPointInvalidWord, 0); 
-    assert.strictEqual(totalPointBanana, 3); 
+    assert.strictEqual(totalPointBanana, 5); 
   });
+
 });

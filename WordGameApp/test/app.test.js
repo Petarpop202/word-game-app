@@ -3,8 +3,8 @@ const request = require('supertest');
 const app = require('../app'); 
 
 describe('Word Check API', () => {
-  // Valid word 1 pts
-  it('should return success for a valid word, expected points 1', async () => {
+  // Valid word
+  it('should return success for a valid word', async () => {
     const response = await request(app)
       .post('/word-check')
       .send({ word: 'example' });
@@ -16,11 +16,11 @@ describe('Word Check API', () => {
       'The word "example" is a valid English word.'
     );
 
-    assert.strictEqual(response.body.totalPoints, 1);
+    assert.strictEqual(response.body.totalPoints, 6);
   });
 
-  // Valid word and palindrome 4 pts
-  it('should return success for a valid word and palindrome word, expected points 4', async () => {
+  // Valid word and palindrome
+  it('should return success for a valid word and palindrome word', async () => {
     const response = await request(app)
       .post('/word-check')
       .send({ word: 'ana' });
@@ -32,11 +32,11 @@ describe('Word Check API', () => {
       'The word "ana" is a valid English word.'
     );
 
-    assert.strictEqual(response.body.totalPoints, 4);
+    assert.strictEqual(response.body.totalPoints, 5);
   });
 
-  //Valid word and almost palindrome 3 pts
-  it('should return success for a valid word and almost palindrome word, expected points 3', async () => {
+  //Valid word and almost palindrome
+  it('should return success for a valid word and almost palindrome word', async () => {
     const response = await request(app)
       .post('/word-check')
       .send({ word: 'banana' });
@@ -48,11 +48,11 @@ describe('Word Check API', () => {
       'The word "banana" is a valid English word.'
     );
 
-    assert.strictEqual(response.body.totalPoints, 3);
+    assert.strictEqual(response.body.totalPoints, 5);
   });
 
-  // Invalid word 0 pts
-  it('should return error for an invalid word, expected points 0', async () => {
+  // Invalid word
+  it('should return error for an invalid word', async () => {
     const response = await request(app)
       .post('/word-check')
       .send({ word: 'invalidword' });
